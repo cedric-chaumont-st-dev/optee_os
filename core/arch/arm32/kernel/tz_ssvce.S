@@ -554,7 +554,7 @@ arm_cl2_cleaninvbyway:
 
 	/* Clean and invalidate all cache ways */
 	movw r0, #0x27FC
-	movt r0, #0xFFFE
+	movt r0, #0x0876
 	movw r1, #0x00FF
 	movt r1, #0x0000
 	str r1, [r0]
@@ -568,7 +568,7 @@ loop_cli_way_done:
 
 	/* Cache Sync */
 	movw r0, #0x2730
-	movt r0, #0xFFFE
+	movt r0, #0x0876
 
 	/* Wait for writing cache sync */
 loop_cli_sync:
@@ -592,7 +592,7 @@ arm_cl2_invbyway:
 
 	/* Clean by Way */
 	movw r0, #0x277C
-	movt r0, #0xFFFE
+	movt r0, #0x0876
 	movw r1, #0x00FF	/* assumes here 8-way L2 cache (orly) */
 	movt r1, #0x0000
 	str r1, [r0]
@@ -606,7 +606,7 @@ loop_inv_way_done:
 
 	/* Cache Sync */
 	movw r0, #0x2730
-	movt r0, #0xFFFE
+	movt r0, #0x0876
 
 	/* Wait for writing cache sync */
 loop_inv_way_sync:
@@ -631,7 +631,7 @@ arm_cl2_cleanbyway:
 
 	/* Clean by Way */
 	movw r0, #0x27BC
-	movt r0, #0xFFFE
+	movt r0, #0x0876
 	movw r1, #0x00FF
 	movt r1, #0x0000
 	str r1, [r0]
@@ -645,7 +645,7 @@ loop_cl_way_done:
 
 	/* Cache Sync */
 	movw r0, #0x2730
-	movt r0, #0xFFFE
+	movt r0, #0x0876
 
 	/* Wait for writing cache sync */
 loop_cl_way_sync:
@@ -677,7 +677,7 @@ arm_cl2_cleanbypa:
 	 * Undocummented SCU Diagnostic Control Register
 	 */
 	MOVW R2, #0x0030 /* LSB */
-	MOVT R2, #0xFFFE /* MSB */
+	MOVT R2, #0x0876 /* MSB */
 	MOVW R3, #0x0001
 	MOVT R3, #0x0000
 	STR R3, [R2]
@@ -691,7 +691,7 @@ arm_cl2_cleanbypa:
 	/* Clean PA */
 loop_cl2_clean_by_pa:
 	movw R2, #0x27B0
-	movt R2, #0xFFFE
+	movt R2, #0x0876
 	str R0, [R2]
 
 	/* Wait for PA to be cleaned */
@@ -707,7 +707,7 @@ loop_cl_pa_done:
 
 	/* Cache Sync */
 	movw R2, #0x2730
-	movt R2, #0xFFFE
+	movt R2, #0x0876
 
 	/* Wait for writing cache sync */
 loop_cl_pa_sync:
@@ -738,7 +738,7 @@ arm_cl2_invbypa:
 	 * Undocummented SCU Diagnostic Control Register
 	 */
 	MOVW R2, #0x0030 /* LSB */
-	MOVT R2, #0xFFFE /* MSB */
+	MOVT R2, #0x0876 /* MSB */
 	MOVW R3, #0x0001
 	MOVT R3, #0x0000
 	STR R3, [R2]
@@ -752,7 +752,7 @@ arm_cl2_invbypa:
 	/* Invalidate PA */
 loop_cl2_inv_by_pa:
 	MOVW R2, #0x2770
-	MOVT R2, #0xFFFE
+	MOVT R2, #0x0876
 	STR R0, [R2]
 
 	/* Wait for PA to be invalidated */
@@ -769,7 +769,7 @@ loop_inv_pa_done:
 
 	/* Cache Sync */
 	MOVW R2, #0x2730
-	MOVT R2, #0xFFFE
+	MOVT R2, #0x0876
 
 	/* Wait for writing cache sync */
 loop_inv_pa_sync:
@@ -800,7 +800,7 @@ arm_cl2_cleaninvbypa:
 	 * Undocummented SCU Diagnostic Control Register
 	 */
 	MOVW R0, #0x0030 /* LSB */
-	MOVT R0, #0xFFFE /* MSB */
+	MOVT R0, #0x0876 /* MSB */
 	MOVW R1, #0x0001
 	MOVT R1, #0x0000
 	STR R1, [R0]
@@ -813,7 +813,7 @@ arm_cl2_cleaninvbypa:
 
 	/* Invalidate PA */
 	movw r0, #0x27F0
-	movt r0, #0xFFFE
+	movt r0, #0x0876
 	mov r1, r12 // CeCh
 	str r1, [r0]
 
@@ -826,7 +826,7 @@ loop_cli_pa_done:
 
 	/* Cache Sync */
 	movw r0, #0x2730
-	movt r0, #0xFFFE
+	movt r0, #0x0876
 
 	/* Wait for writing cache sync */
 loop_cli_pa_sync:
